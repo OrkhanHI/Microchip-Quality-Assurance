@@ -187,5 +187,7 @@ First plot shows underfitting while the last one represent the overfitting of th
 
 All three scores (Precision, Recall and F-1 Score) are improved from Logistic Regression binary classification to Logistic Regression multi-class classification. Because the third class (undecided) that we included in multi-class model is easily separable by decision boundary of the Logistic Regression the overall scores are improved. From the Confusion Matrix of multi-class classification it is visible that True Positives for third class is quite high which make all scores to be biased.
 <br><br>
-F1 score is the harmonic mean of precision and recall, so F1 score should fall between the precision score and recall score. Because we are applying *weighted F1-score* which calculated F1-score for each class and find their average by support can make F1-score not to fall betweeen Precision and Recall.
+F1 score is the harmonic mean of precision and recall, so F1 score should fall between the precision score and recall score. Because we are applying *weighted F1-score* which calculated F1-score for each class and find their average by support can make F1-score not to fall betweeen Precision and Recall.<br>
 <b>Weighted F1-Score: 40%</b>
+
+![Pic1](Multiclass.png)
