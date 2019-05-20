@@ -95,7 +95,97 @@ In order to improve the performance of Logisitic Regression model, polynomial de
   </tr>
 </table>
 
+<b>Accuracy for test data(score): *82%*</b><br>
+<b>Precision: *91%*</b><br>
+<b>Recall: *78%*</b><br>
+<b>F1-Score: *84%*</b>
+<br><br>
+After mapping the data to higher dimension, the hyperplane divided classes pretty well. The best Score, Precision and Recall values are obtained by using 4-degree polynomial with complexity 10 (C= 10) where we have the least number of False Positives(2) and False Negatives(6).<br>
+However, increasing the dimension of data is making the model to overfit, hence, we need to consider the complexity adjustment to avoid overfitting.
 
+![Pic1](Polynomial.png)
 
+It is clear from the plot that by increasing the inverse lambda (Lambda=1/C) we are making the model to overfit.
+First plot shows underfitting while the last one represent the overfitting of the model.
+<br><br><br><br>
 ### Three class Classification 
-4. Report the precision score, recall score and F1 score of the logistic regression classifier from part 1. You need to build a multi-class logistic regression model using softmax function, which can be implemented by multi_class = 'multinomial' and solver='newton-cg'. Please report the precision score, recall score and F1 score again with average='weighted' (the other options are 'micro' and 'macro', we ignore them here). Is it true that all three scores have improved from binary classification to 3-class classification? Why do the three scores improve or decline? Intuitively, with more classes, both precision and recall decrease as the classification task is deemed harder. F1 score is the harmonic mean of precision and recall, so F1 score should fall between the precision score and recall score. Is this what you observed? Why is it so?
+<b>*4. Multi-class Logistic Regression model using Softmax function</b>*
+
+<table style="width:100%">
+  <caption><b>4-degree Polynomial degree Confusion Matrix</b></caption>
+  <tr>
+    <th></th>
+    <th>Predicted Class = 0</th>
+    <th>Predicted Class = 1</th>
+    <th>Predicted Class = 2</th>
+  </tr>
+  <tr>
+    <td><b>Actual Class = 0</b></td>
+    <td>11</td>
+    <td>4</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><b>Actual Class = 1</b></td>
+    <td>24</td>
+    <td>3</td>
+    <td>0</td>
+  </tr>
+    <tr>
+    <td><b>Actual Class = 2</b></td>
+    <td>1</td>
+    <td>2</td>
+    <td>12</td>
+  </tr>
+</table>
+
+<table style="width:100%">
+  <caption><b>4-degree Polynomial degree Confusion Matrix</b></caption>
+  <tr>
+    <th>Class</th>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>F1-Score</th>
+    <th>Support</th>
+  </tr>
+  <tr>
+    <td><b>0</b></td>
+    <td>0.31</td>
+    <td>0.61</td>
+    <td>0.41</td>
+    <td>18</td>
+  </tr>
+   <tr>
+    <td><b>1</b></td>
+    <td>0.33</td>
+    <td>0.11</td>
+    <td>0.17</td>
+    <td>27</td>
+  </tr>
+    <tr>
+    <td><b>2</b></td>
+    <td>0.80</td>
+    <td>0.80</td>
+    <td>0.80</td>
+    <td>15</td>
+  </tr>
+    <tr>
+    <td><b>Avg/Total</b></td>
+    <td>0.44</td>
+    <td>0.43</td>
+    <td>0.40</td>
+    <td>60</td>
+  </tr>
+  
+</table>
+
+<b>Accuracy for test data(score): *43%*</b><br>
+<b>Precision: *44%*</b><br>
+<b>Recall: *43%*</b><br>
+<b>F1-Score: *40%*</b>
+<br><br>
+
+All three scores (Precision, Recall and F-1 Score) are improved from Logistic Regression binary classification to Logistic Regression multi-class classification. Because the third class (undecided) that we included in multi-class model is easily separable by decision boundary of the Logistic Regression the overall scores are improved. From the Confusion Matrix of multi-class classification it is visible that True Positives for third class is quite high which make all scores to be biased.
+<br><br>
+F1 score is the harmonic mean of precision and recall, so F1 score should fall between the precision score and recall score. Because we are applying *weighted F1-score* which calculated F1-score for each class and find their average by support can make F1-score not to fall betweeen Precision and Recall.
+<b>Weighted F1-Score: 40%</b>
